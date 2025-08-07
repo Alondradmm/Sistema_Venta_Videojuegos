@@ -12,7 +12,7 @@ Aplicación que despliega un conjunto de productos (videojuegos) indicando su pr
 - **Frameworks:** EJS
 - **Lenguajes de programación:** HTML, CSS, JavaScript
 
-## Instrucciones de ejecución
+## Instrucciones de ejecución 📑
 El proyecto corre con Node.js mediante el archivo index.js
 Sin embargo, al implementar nodemon para cambios automáticos, es posible inicializar el proyecto mediante el comando
 
