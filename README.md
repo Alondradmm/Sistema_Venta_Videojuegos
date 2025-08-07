@@ -2,7 +2,7 @@
 
 **Estudiante:** Méndez Méndez Alondra Daniela IDSM31
 
-## Descripcióℹn ℹ️
+## Descripción ℹ️
 Aplicación que despliega un conjunto de productos (videojuegos) indicando su precio y disponibilidad, en donde se podrán registrar ventas y actualizar el stock de los mismos.
 
 ## Tecnologías utilizadas ⚙️
