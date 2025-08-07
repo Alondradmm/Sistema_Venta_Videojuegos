@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <h1>Inventario de Videojuegos</h1>
+    </header>
+
+    <main>
+
+        <h2>Ventas</h2>
+        <form class="formContainer" action="/productos" method="post" id="formVenta">
+            <div class="formGroup">
+                <div class="formComponent">
+                    <label for="producto">Ingresa el producto a comprar</label>
+                    <div class="comboBox">
+                        <input name="producto" type="text" placeholder="Buscar..." id="searchProduct" onkeyup="search()" onfocus="openProducts()" onblur="closeProducts()" autocomplete="off">
+                        <input type="text" id="productoId" hidden value="0" name="id">
+                        <div id="productList" hidden>
+                            <% for (let item of data) { %>
+                                <div onclick="setValue('<%= item.nombre %>', '<%= item.id %>')" class="option"><%= item.nombre %></div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formComponent">
+                    <label for="cantidad">Ingresa las unidades</label>
+                    <input type="number" id="productoCantidad" name="cantidad">
+                </div>
+                
+                <input type="button" value="Calcular Total" id="calcularTotal">
+            </div>
+            
+            
+            <div class="formGroup">
+                <div class="formComponent">
+                    <label for="total">Total (MXN)</label>
+                    <input type="number" name="total" id="total" readonly onfocus="this.blur()">
+                </div>
+
+                <div class="formComponent">
+                    <label for="pago">Cantidad a Pagar</label>
+                    <input type="number" name="pago" id="pago">
+                </div>
+                
+                <input type="submit" value="Realizar Venta">
+            </div>
+
+        </form>
+        
+        <div class="message <%= success ? 'success' : 'error' %>" id="message" <%= !locals.message ? 'hidden' : '' %>>
+            <% if (locals.message) { %>
+                <%= message %>
+            <% } %>
+        </div>
+        
+        <hr>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Videojuego</th>
+                    <th>Portada</th>
+                    <th>Plataforma</th>
+                    <th>Precio</th>
+                    <th>Última Venta</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let item of data) { %>
+                    <tr>
+                        <td>#<%= item.id %></td>
+                        <td><%= item.nombre %></td>
+                        <td><img src="<%= item.img %>" alt=""></td>
+                        <td><i class="<%= item.plataforma %>"></i></td>
+                        <td>$<%= item.precio %></td>
+                        <td><%= item.ultima_venta %></td>
+                        <td><%= item.stock %></td>
+                    </tr>
+                <% } %>
+            <tbody>
+        </table>
+    </main>
+
+    
+    
+</body>
+
+<script src="js/client.js"></script>
+</html>
